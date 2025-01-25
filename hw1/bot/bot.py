@@ -1,13 +1,14 @@
-import os
+import base64
 import json
 import logging
+import os
 import tempfile
+
+import boto3
 import requests
 from dotenv import load_dotenv
 from telegram import Update
 from telegram.ext import ApplicationBuilder, CommandHandler, MessageHandler, filters, ContextTypes
-import base64
-import boto3
 
 load_dotenv()
 
@@ -104,7 +105,8 @@ async def handle_text(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 # Обработка фотографии
 async def handle_photo(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    if len(update.message.photo) > 1:
+    # Проверяем, отправлена ли медиагруппа (несколько фотографий)
+    if update.message.media_group_id:
         await update.message.reply_text(PHOTO_LIMIT_MESSAGE)
         return
 

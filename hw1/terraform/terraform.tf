@@ -111,7 +111,7 @@ variable "folder_id" {
 variable "bucket_name" {
   type        = string
   description = "Название бакета, в котором находится объект с инструкцией к YandexGPT"
-  default     = "tg-bot-bucket-vvot08"
+  default     = "bot-bucket-vvot08"
 }
 
 variable "aws_access_key_id" {
