@@ -1,0 +1,1 @@
+nextcloud ansible_host=89.169.147.232 ansible_connection=ssh ansible_user=ubuntu
